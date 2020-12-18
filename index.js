@@ -5,9 +5,7 @@ const request = require("request");
 const prefix = process.env.PREFIX;
 const token = process.env.BOT_TOKEN;
 
-inspirobot.login(token);
-
-inspirobot.on('ready', () => {
+inspirobot.on('ready', async () => {
   console.log(`${bot.user.username} is online!`);
   inspirobot.user.setActivity("Brody...", { type: "WATCHING" });
 });
@@ -56,3 +54,5 @@ inspirobot.on('message', msg => {
     });
   }
 });
+
+inspirobot.login(token);
