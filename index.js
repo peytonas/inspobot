@@ -27,7 +27,7 @@ bot.on("ready", async () => {
 
 bot.on("message", async (message) => {
   if (message.content === "Inspo?") {
-    message.channel.send("Hi!")
+    message.channel.send({ files: ["./Assets/kirby_hi.gif"] });
   }
   // if (message.content === "!quote") {
   //   console.log("finding pics");
