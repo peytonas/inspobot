@@ -33,23 +33,13 @@ bot.on("message", async (message) => {
     message.channel.send("Did you know...");
     request('http://inspirobot.me/api?generate=true', function (error, response, body) {
       if (!error && response.statusCode == 200) {
-        msg.channel.send({
-          embed: {
-            color: 3447003,
-            description: "Here's a motivational image for you! :wink:",
-            image: {
-              url: body
-            }
-          }
-        });
-        // const embed = new Discord.MessageEmbed()
-        //   .setTitle("INSPIROBOT")
-        //   .setThumbnail(
-        //     "https://inspirobot.me/website/images/inspirobot-dark-green.png"
-        //   )
-        //   .setColor(0xff0000)
-        //   .setImage(imgs[0]);
-        // console.log(imgs[0])
+          const embed = new Discord.MessageEmbed()
+            .setTitle("INSPIROBOT")
+            .setThumbnail(
+              "https://inspirobot.me/website/images/inspirobot-dark-green.png"
+            )
+            .setColor(0xff0000)
+            .setImage(body)
       }
     })
   }
