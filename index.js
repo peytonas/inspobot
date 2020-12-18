@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const bot = new Discord.Client();
+const inspirobot = new Discord.Client();
 const request = require("request");
 
 const prefix = process.env.PREFIX;
@@ -7,23 +7,19 @@ const token = process.env.BOT_TOKEN;
 
 inspirobot.login(token);
 
-// bot.on("ready", async () => {
-//   console.log(`${bot.user.username} is online!`);
-//   bot.user.setActivity("Brody...", { type: "WATCHING" });
-// });
-bot.on('ready', () => {
-  console.log(`${bot.user.username} is online!`);
-  bot.user.setActivity("Brody...", { type: "WATCHING" });
+inspirobot.on('ready', () => {
+  console.log(`Logged in as ${inspirobot.user.tag}!`);
+  inspirobot.user.setGame('!help');
 });
 
-bot.on('message', msg => {
-  if (msg.content === '!quote') {
+inspirobot.on('message', msg => {
+  if (msg.content === '!inspirome') {
     request('http://inspirobot.me/api?generate=true', function (error, response, body) {
       if (!error && response.statusCode == 200) {
         msg.channel.send({
           embed: {
-            color: 0xff0000,
-            title: "Inspo",
+            color: 3447003,
+            description: "Here's a motivational image for you! :wink:",
             image: {
               url: body
             }
@@ -47,15 +43,43 @@ bot.on('message', msg => {
     msg.channel.send({
       embed: {
         color: 3447003,
-        title: "Inspo Help:",
+        title: "InspiroBot Help Command",
+        description: "Type **!help** to see available command",
         fields: [{
           name: "Commands",
-          value: "**!quote** - Display motivational image"
+          value: "**!inspirome** - Display motivational image"
         }]
       }
     });
   }
 });
+
+
+// const Discord = require("discord.js");
+// const bot = new Discord.Client();
+// const request = require("request");
+
+// const prefix = process.env.PREFIX;
+// const token = process.env.BOT_TOKEN;
+
+// bot.on("ready", async () => {
+//   console.log(`${bot.user.username} is online!`);
+//   bot.user.setActivity("Brody...", { type: "WATCHING" });
+// });
+
+// (async () => {
+//   const browser = await puppeteer.launch();
+//   const page = await browser.newPage();
+//   await page.goto("https://inspirobot.me/");
+//   await page.click(".btn-text");
+//   await page.waitFor(1500);
+//   imgs = await page.$$eval(".generator img[src]", (imgs) =>
+//   imgs.map((img) => img.getAttribute("src"))
+//   );
+//   console.log(imgs);
+//   console.log(imgs[0]);
+//   await browser.close();
+// })();
 
 // bot.on("message", async (message) => {
 //   if (message.content === "Inspo?") {
@@ -70,7 +94,7 @@ bot.on('message', msg => {
 //             .setThumbnail(
 //               "https://inspirobot.me/website/images/inspirobot-dark-green.png"
 //             )
-            // .setColor(0xff0000)
+//             .setColor(0xff0000)
 //             .setImage(body)
 //       }
 //     })
