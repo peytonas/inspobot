@@ -22,6 +22,7 @@ inspirobot.on('message', msg => {
         msg.channel.send({
           embed: {
             color: 0xff0000,
+            description: "Did you know...🧐",
             image: {
               url: body
             }
