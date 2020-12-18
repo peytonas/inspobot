@@ -30,19 +30,16 @@ bot.on("message", async (message) => {
     message.channel.send({ files: ["./Assets/kirby_hi.gif"] });
   }
   if (message.content === "!quote") {
-    message.channel.send(".quote")
     message.channel.send("Did you know...");
+    message.channel.send(imgs[0]);
     const embed = new Discord.MessageEmbed()
       .setTitle("INSPIROBOT")
       .setThumbnail(
         "https://inspirobot.me/website/images/inspirobot-dark-green.png"
       )
       .setColor(0xff0000)
-      .setImage(
-        imgs[0]
-    );
+      .setImage(imgs[0]);
     console.log(imgs[0])
-    message.channel.send(imgs[0]);
   }
 });
 
