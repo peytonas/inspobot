@@ -42,15 +42,16 @@ bot.on("message", async (message) => {
             }
           }
         });
-    // const embed = new Discord.MessageEmbed()
-    //   .setTitle("INSPIROBOT")
-    //   .setThumbnail(
-    //     "https://inspirobot.me/website/images/inspirobot-dark-green.png"
-    //   )
-    //   .setColor(0xff0000)
-    //   .setImage(imgs[0]);
-    // console.log(imgs[0])
+        // const embed = new Discord.MessageEmbed()
+        //   .setTitle("INSPIROBOT")
+        //   .setThumbnail(
+        //     "https://inspirobot.me/website/images/inspirobot-dark-green.png"
+        //   )
+        //   .setColor(0xff0000)
+        //   .setImage(imgs[0]);
+        // console.log(imgs[0])
+      }
+    })
   }
-});
-
+})
 bot.login(token);
