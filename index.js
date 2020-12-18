@@ -8,7 +8,7 @@ const token = process.env.BOT_TOKEN;
 
 bot.on("ready", async () => {
   console.log(`${bot.user.username} is online!`);
-  bot.user.setActivity("Brody...", { type: "WATCHING" });
+  bot.user.setActivity("Also watching Brody...", { type: "WATCHING" });
 });
 
 (async () => {
