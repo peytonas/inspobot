@@ -29,19 +29,19 @@ bot.on("message", async (message) => {
   if (message.content === "Inspo?") {
     message.channel.send("Hi!")
   }
-  if (message.content === "!quote") {
-    console.log("finding pics");
-    // const embed = new Discord.MessageEmbed()
-    //   .setTitle("INSPIROBOT")
-    //   .setThumbnail(
-    //     "https://inspirobot.me/website/images/inspirobot-dark-green.png"
-    //   )
-    //   .setColor(0xff0000)
-    //   .setImage(
-    //     imgs[0]
-    //   );
-    message.channel.send(imgs[0]);
-  }
+  // if (message.content === "!quote") {
+  //   console.log("finding pics");
+  //   // const embed = new Discord.MessageEmbed()
+  //   //   .setTitle("INSPIROBOT")
+  //   //   .setThumbnail(
+  //   //     "https://inspirobot.me/website/images/inspirobot-dark-green.png"
+  //   //   )
+  //   //   .setColor(0xff0000)
+  //   //   .setImage(
+  //   //     imgs[0]
+  //   //   );
+  //   message.channel.send(imgs[0]);
+  // }
 });
 
 bot.login(token);
