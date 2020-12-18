@@ -3,6 +3,14 @@ const bot = new Discord.Client();
 const puppeteer = require("puppeteer");
 let imgs;
 
+const prefix = process.env.PREFIX;
+const token = process.env.BOT_TOKEN;
+
+bot.on("ready", async () => {
+  console.log(`${bot.user.username} is online!`);
+  bot.user.setActivity("Brody...", { type: "WATCHING" });
+});
+
 (async () => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
@@ -17,6 +25,9 @@ let imgs;
 })();
 
 bot.on("message", async (message) => {
+  if (message.content === "Inspo?") {
+    message.channel.send("Hi!")
+  }
   if (message.content === "!quote") {
     console.log("finding pics");
     console.log(imgs);
@@ -32,3 +43,5 @@ bot.on("message", async (message) => {
     message.channel.send(embed);
   }
 });
+
+bot.login(token);
