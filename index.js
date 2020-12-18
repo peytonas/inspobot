@@ -27,7 +27,7 @@ bot.on("ready", async () => {
 
 bot.on("message", async (message) => {
   if (message.content === "Inspo?") {
-    message.reply("Hi!")
+    message.channel.send("Hi!")
   }
   // if (message.content === "!quote") {
   //   console.log("finding pics");
