@@ -11,7 +11,7 @@ bot.on("ready", async () => {
   bot.user.setActivity("Brody...", { type: "WATCHING" });
 });
 
-(async () => {
+let test = (async () => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
   await page.goto("https://inspirobot.me/");
@@ -29,8 +29,8 @@ bot.on("message", async (message) => {
     message.channel.send("Hi!")
   }
   if (message.content === "!quote") {
+    test;
     console.log("finding pics");
-    console.log(imgs);
     const embed = new Discord.MessageEmbed()
       .setTitle("INSPIROBOT")
       .setThumbnail(
