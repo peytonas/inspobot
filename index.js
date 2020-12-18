@@ -8,7 +8,7 @@ const token = process.env.BOT_TOKEN;
 
 bot.on("ready", async () => {
   console.log(`${bot.user.username} is online!`);
-  bot.user.setActivity("Watching Brody...", { type: "WATCHING" });
+  bot.user.setActivity("Brody...", { type: "WATCHING" });
 });
 
 (async () => {
@@ -38,7 +38,7 @@ bot.on("message", async (message) => {
       )
       .setColor(0xff0000)
       .setImage(
-        "https://i.pinimg.com/originals/4a/3e/cf/4a3ecf27eac13564145691bb16a8cf90.png"
+        imgs[0]
       );
     message.channel.send(embed);
   }
