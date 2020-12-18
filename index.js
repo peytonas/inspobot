@@ -30,7 +30,7 @@ bot.on("message", async (message) => {
     message.channel.send({ files: ["./Assets/kirby_hi.gif"] });
   }
   if (message.content === "!quote") {
-    imgGrab()
+    await imgGrab()
     console.log("finding pics");
     const embed = new Discord.MessageEmbed()
       .setTitle("INSPIROBOT")
