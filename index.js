@@ -15,6 +15,19 @@ inspirobot.on('message', msg => {
     msg.channel.send({ files: ["./Assets/kirby_hi.gif"] });
   }
   if (msg.content === '!quote') {
+    request('http://inspirobot.me/api?generate=true', function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        msg.channel.send({
+          embed: {
+            color: 0xff0000,
+            description: "Did you know...🧐",
+            image: {
+              url: body
+            }
+          }
+        });
+      }
+    });
     setInterval(function () {
       request('http://inspirobot.me/api?generate=true', function (error, response, body) {
       if (!error && response.statusCode == 200) {
@@ -29,7 +42,7 @@ inspirobot.on('message', msg => {
         });
       }
     });
-  }, 10000)
+  }, 3600000)
   }
 });
 
