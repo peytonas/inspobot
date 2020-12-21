@@ -5,9 +5,12 @@ const request = require("request");
 const prefix = process.env.PREFIX;
 const token = process.env.BOT_TOKEN;
 
+var myTimer = setInterval(requestInspo, 10000)
+
 inspirobot.on("ready", async () => {
   console.log(`${inspirobot.user.username} is online!`);
-  inspirobot.user.setActivity("Brody...", { type: "WATCHING" });
+  inspirobot.user.setActivity("Brody...", { type: "WATCHING" }); ''
+  myTimer()
 });
 
 function requestInspo() {
@@ -25,8 +28,6 @@ function requestInspo() {
       }
     });
 }
-
-var myTimer = setInterval(requestInspo, 10000)
 
 function stopTimer() {
   clearInterval(myTimer)
@@ -53,9 +54,7 @@ inspirobot.on('message', msg => {
     });
   }
 
-  if (msg.content === '!scheduledInspo') {
-    myTimer()
-  } else if (msg.content === "!shutup") {
+  if (msg.content === "!shutup") {
     stopTimer()
   }
 });
