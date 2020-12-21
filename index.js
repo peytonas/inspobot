@@ -5,35 +5,10 @@ const request = require("request");
 const prefix = process.env.PREFIX;
 const token = process.env.BOT_TOKEN;
 
-function myTimer() {
-  setInterval(requestInspo, 10000)
-} 
-function requestInspo() {
-  request('http://inspirobot.me/api?generate=true', function (error, response, body) {
-      if (!error && response.statusCode == 200) {
-        msg.channel.send({
-          embed: {
-            color: 0xff0000,
-            description: "Did you know...🧐",
-            image: {
-              url: body
-            }
-          }
-        });
-      }
-    });
-}
-
-function stopTimer() {
-  clearInterval(myTimer)
-}
 inspirobot.on("ready", async () => {
   console.log(`${inspirobot.user.username} is online!`);
-  inspirobot.user.setActivity("Brody...", { type: "WATCHING" }); ''
-  myTimer()
+  inspirobot.user.setActivity("Brody...", { type: "WATCHING" });
 });
-
-
 
 inspirobot.on('message', msg => {
   if (msg.content === "Inspo?") {
@@ -41,7 +16,7 @@ inspirobot.on('message', msg => {
   }
 
   if (msg.content === '!quote') {
-    request('http://inspirobot.me/api?generate=true', function (error, response, body) {
+      request('http://inspirobot.me/api?generate=true', function (error, response, body) {
       if (!error && response.statusCode == 200) {
         msg.channel.send({
           embed: {
@@ -54,10 +29,26 @@ inspirobot.on('message', msg => {
         });
       }
     });
+  // }, 21600000)
   }
 
-  if (msg.content === "!shutup") {
-    stopTimer()
+  if (msg.content === '!scheduledInspo') {
+    setInterval(function () {
+      request('http://inspirobot.me/api?generate=true', function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        msg.channel.send({
+          embed: {
+            color: 0xff0000,
+            description: "Did you know...🧐",
+            image: {
+              url: body
+            }
+          }
+        });
+      }
+    });
+  // }, 21600000)
+  }, 10000)
   }
 });
 
