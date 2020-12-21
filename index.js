@@ -44,7 +44,19 @@ inspirobot.on('message', msg => {
   }
 
   if (msg.content === '!quote') {
-    requestInspo()
+    request('http://inspirobot.me/api?generate=true', function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        msg.channel.send({
+          embed: {
+            color: 0xff0000,
+            description: "Did you know...🧐",
+            image: {
+              url: body
+            }
+          }
+        });
+      }
+    });
   }
 });
 
