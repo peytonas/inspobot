@@ -29,10 +29,10 @@ inspirobot.on('message', msg => {
         });
       }
     });
-  // }, 21600000)
   }
 
   if (msg.content === '!scheduledInspo') {
+    msg.channel.send("Every 6 hours, on it!")
     setInterval(function () {
       request('http://inspirobot.me/api?generate=true', function (error, response, body) {
       if (!error && response.statusCode == 200) {
