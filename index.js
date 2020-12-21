@@ -10,13 +10,8 @@ inspirobot.on("ready", async () => {
   inspirobot.user.setActivity("Brody...", { type: "WATCHING" });
 });
 
-inspirobot.on('message', msg => {
-  if (msg.content === "Inspo?") {
-    msg.channel.send({ files: ["./Assets/kirby_hi.gif"] });
-  }
-  if (msg.content === '!quote') {
-    setInterval(function () {
-      request('http://inspirobot.me/api?generate=true', function (error, response, body) {
+function requestInspo() {
+  request('http://inspirobot.me/api?generate=true', function (error, response, body) {
       if (!error && response.statusCode == 200) {
         msg.channel.send({
           embed: {
@@ -29,8 +24,27 @@ inspirobot.on('message', msg => {
         });
       }
     });
-  // }, 21600000)
-  }, 10000)
+}
+
+var myTimer = setInterval(requestInspo, 10000)
+
+function stopTimer() {
+  clearInterval(myTimer)
+}
+
+inspirobot.on('message', msg => {
+  if (msg.content === "Inspo?") {
+    msg.channel.send({ files: ["./Assets/kirby_hi.gif"] });
+  }
+
+  if (msg.content === '!scheduledInspo') {
+    myTimer()
+  } else if (msg.content === "!shutup") {
+    stopTimer()
+  }
+
+  if (msg.content === '!quote') {
+    requestInspo()
   }
 });
 
